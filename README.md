@@ -1,1 +1,1 @@
-# Truma_control
+# Tru-Control
