@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "local_broker": {
+    "host": "localhost",
+    "port": 1883,
+    "client_id": "bridge_local"
+  },
+  "cloud_broker": {
+    "host": "xxxxxyyyyyzzzzz.ala.eu-central-1.emqxsl.com",
+    "port": 8883,
+    "username": "xxxxxxx",
+    "password": "yyyyyyy",
+    "client_id": "bridge_cloud",
+    "use_tls": true,
+    "verify_certificate": false,
+    "keepalive": 60
+  },
+  "topics": {
+    "local_to_cloud": [
+      "service/truma/online",
+      "service/truma/display_status/current_temp_room",
+      "service/truma/display_status/current_temp_water",
+      "service/truma/control_status/heating_mode",
+      "service/truma/control_status/el_power_level",
+      "service/truma/display_status/voltage",
+      "service/truma/control_status/clock",
+      "service/truma/display_status/cp_plus_display_status",
+      "service/truma/control_status/target_temp_room",
+      "service/truma/control_status/target_temp_water",
+      "service/truma/control_status/energy_mix",
+      "service/truma/control_status/error_code"
+    ],
+    "cloud_to_local": [
+      "service/truma/set/#"
+    ]
+  },
+  "options": {
+    "enable_local_retain": false,
+    "cloud_retain": true,
+    "qos": 1,
+    "rate_limit_seconds": 0.5,
+    "reconnect_delay": 5,
+    "log_level": "INFO",
+    "debug_messages": true
+  }
+}
