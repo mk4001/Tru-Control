@@ -79,6 +79,8 @@ A qusto punto lo script "mqtt_bridge_complete.py", divenuto un servizio di siste
 
 ------------------------------------------------------------------------------------
 
+<img width="40" alt="BLE" src="https://github.com/mk4001/Tru-Control/blob/main/images/BLE%20icon.png">
+
 **truma_ble_server.py** - Server BLE per funzionamento in locale senza alcuna infrastruttura (peer 2 peer)
 
 Per consentire la connettività tra l'app IOS e il raspberry in modo diretto, senza l'ausilio di router o accessori vari di comunicazione verso internet, bisogna installare uno script python che troverete sempre in "truma_ble_server.py" e si chiama: "truma_ble_server.py".
