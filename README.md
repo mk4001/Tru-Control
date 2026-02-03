@@ -32,22 +32,49 @@ Quando avrete terminato con successo l'installazione e i test di HW/SW del proto
 
 ------------------------------------------------------------------------------------
 
-**mqtt_bridge_complete.py**  - Gateway MQTT verso broker in cloud
+**mqtt_bridge_complete.py**  - Gateway MQTT verso il broker in cloud
 
-Questo script deve essere copiato nella directory "/usr/local/bin/mqtt_bridge_complete.py", quindi accorre aggiungere i permessi per l'esecuzione:
+Per consentire l'accesso del broker MQTT mosquitto installato localemnte sul Raspberry, occorrono duplicare alcuni topic su un MQTT broker in cloud.
+
+Io ne ho provati 2, gratuiti, che se non si fa un uso estremamente intensivo dell'app posso tranquillamente servire al nostro scopo, e sono:
+
+https://www.emqx.com/en
+
+https://www.hivemq.com
+
+Una volta scelto il vostro MQTT broker in cloud e creato un cluster gratuito, riceverete le credenziali per l'accesso remoto: conservatele con cura, ci serviranno tra poco.
+
+Cominciamo quindi ad installare lo script che funge da gateway tra il broker Mosquitto locale sul Raspberry e il broker MQTT in cloud che avete scelto.
+
+Nella directory: "Python add ons", troverete lo script in questione; esso deve essere copiato nella directory "/usr/local/bin/mqtt_bridge_complete.py" del Raspberry:
+
+**sudo nano /usr/local/bin/mqtt_bridge_complete.py**
+
+Occorre quindi aggiungere i permessi per l'esecuzione:
 
 **sudo chmod +x /usr/local/bin/mqtt_bridge_complete.py**
 
-Un shell script "mqtt-bridge.service.sh" consente di creare il servizio relativo allo sctipt: "mqtt_bridge_complete.py", una volta eseguito proseguiamo con:
+Uno shell-script "mqtt-bridge.service.sh" consente di creare il servizio relativo allo sctipt: "mqtt_bridge_complete.py", una volta eseguito proseguiamo con la configurazione dei parametri di comunicazione con il broker in cloud.
 
-occorre ora configurare il file: "config.json" per completare le credenziali d'accesso ai broker in cloud, con il seguente comando:
+Editiamo il file: "config.json" per completare le credenziali d'accesso ai broker in cloud, con il seguente comando:
 
 **sudo nano /etc/mqtt_bridge/config.json**
 
-nella directory "Python add ons" ci sono 2 file di configurazione d'esempio sia per HiveMQ che per EMQX.
+nella directory "Python add ons" ci sono 2 file di configurazione d'esempio sia per HiveMQ che per EMQX. Sostituite le vostre credenziali **SENZA CAMBIARE NIENT'ALTRO.**
+
+Quando avrete completato la congiurazione proseguimo quindi con:
 
 **sudo systemctl daemon-reload**
+
 **sudo systemctl enable --now mqtt-bridge**
+
 **sudo systemctl status mqtt-bridge**
 
+A qusto punto lo script "mqtt_bridge_complete.py" divenuto un servizio di sistema chiamato: "mqtt-bridge" dovrebbe essere up & running e lo potete verificare con il seguente comando:
+
 **sudo journalctl -u mqtt-bridge -f**
+
+------------------------------------------------------------------------------------
+
+**truma_ble_server.py** - Server BLE per funzionamento in locale senza alcuna infrastruttura (peer 2 peer)
+
