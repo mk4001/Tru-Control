@@ -25,7 +25,7 @@ Ciò che a mio parere era necessario per rendere l'applicazione "inetbox.py" che
 
 Ho usato un Raspberry PI Zero 2W
 
-![images/zero2-hero.webp](https://github.com/mk4001/Tru-Control/blob/main/images/zero2-hero.webp)
+<img width="250" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/images/zero2-hero.webp">
 
 Grazie all'hardware impiegato, ho potuto sviluppare l'applicazione che potesse utilizzare tutte le potenzialità radio del Raspberry ossia: Wi-Fi e Bluetooth, dando così la possibilità all'utente di potersi collegare sia da remoto attraverso un broker MQTT in cloud, sia tramite Bluetooth Low Energy (BLE) direttamente sul proprio RV, Camper, VAN, senza bisogno di impiegare alcuna infrastruttura come un riuter di bordo o altro strumento per la connettività verso Internet.
 
