@@ -22,5 +22,13 @@ Ho usato un Raspberry PI Zero 2W
 
 ![images/zero2-hero.webp](https://github.com/mk4001/Tru-Control/blob/main/images/zero2-hero.webp)
 
-Grazie all'hardware impiegato, ho potuto sviluppare l'applicazione che potesse utilizzare tutte le potenzialità radio del Raspberry ossia: Wi-Fi e Bluetooth, dando così la possibilità all'utente di potersi collegare sia da remoto attraverso un broker MQTT in cloud, sia tramite Bluetooth Low Energy (BlE) direttamente sul proprio RV senza bisogno di impiegare alcuna infrastruttura come un riuter di bordo o altro strumento per la collettività verso Internet.
+Grazie all'hardware impiegato, ho potuto sviluppare l'applicazione che potesse utilizzare tutte le potenzialità radio del Raspberry ossia: Wi-Fi e Bluetooth, dando così la possibilità all'utente di potersi collegare sia da remoto attraverso un broker MQTT in cloud, sia tramite Bluetooth Low Energy (BLE) direttamente sul proprio RV, Camper, VAN, senza bisogno di impiegare alcuna infrastruttura come un riuter di bordo o altro strumento per la connettività verso Internet.
+
+------------------------------------------------------------------------------------
+
+Per quanto concerne l'installazione del Raspberry, dell'interfaccia LIN-UART e del ssoftware di base vi rimando al link originale di DanielFett:
+
+https://github.com/danielfett/inetbox.py
+
+Mentre per quanto concernono gli script Python che fungono da gateway sia verso i broker MQTT in cloud che verso l'interfaccia BLE del raspberry, seguite quanto segue:
 
