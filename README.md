@@ -1,5 +1,7 @@
 # Tru-Control
 
+<img width="50" alt="Tru-Control" src="https://github.com/mk4001/Tru-Control/blob/main/Screen%20Shots/IMG_2305.jpeg">
+
 Questo progetto è stato ispirato dal lavoro di DamielFett e più precisamente da questo:
 
 https://github.com/danielfett/inetbox.py
