@@ -71,7 +71,7 @@ Quando avrete completato la congiurazione proseguimo quindi con:
 
 **sudo systemctl status mqtt-bridge**
 
-A qusto punto lo script "mqtt_bridge_complete.py", divenuto un servizio di sistema chiamato: "mqtt-bridge" dovrebbe essere up & running e lo potete verificare con il seguente comando:
+A qusto punto lo script "mqtt_bridge_complete.py", divenuto un servizio di sistema chiamato: "mqtt-bridge.service" dovrebbe essere up & running e lo potete verificare con il seguente comando:
 
 **sudo journalctl -u mqtt-bridge -f**
 
@@ -110,4 +110,20 @@ AlwaysPairable = yes
 Quindi, come per lo script precedente copiamolo con il seguente comando, sul Raspberry:
 
 **sudo nano /usr/local/bin/truma_ble_server.py**
+
+Occorre quindi aggiungere i permessi per l'esecuzione:
+
+**sudo chmod +x /usr/local/bin/truma_ble_server.py**
+
+Uno shell-script "truma-ble.service.sh" consente di creare il servizio relativo allo sctipt: "truma_ble_server.py", una volta eseguito proseguiamo con i solti comandi:
+
+**sudo systemctl daemon-reload**
+
+**sudo systemctl enable --now truma_ble_server.service**
+
+**sudo systemctl status truma_ble_server.service**
+
+A qusto punto lo script "truma_ble_server.py", divenuto un servizio di sistema chiamato: "truma_ble_server.service" dovrebbe essere up & running e lo potete verificare con il seguente comando:
+
+**sudo journalctl -u truma_ble_server.service -f**
 
