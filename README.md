@@ -32,6 +32,8 @@ Quando avrete terminato con successo l'installazione e i test di HW/SW del proto
 
 ------------------------------------------------------------------------------------
 
+![WiFi]https://github.com/mk4001/Tru-Control/blob/b3e17bef1c831712c036104215b137a97956bd5e/images/BLE%20icon.png
+
 **mqtt_bridge_complete.py**  - Gateway MQTT verso il broker in cloud
 
 Per consentire l'accesso remoto del broker MQTT mosquitto installato localmente sul Raspberry, occorre duplicare alcuni topic su un MQTT broker in cloud.
