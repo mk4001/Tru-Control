@@ -27,7 +27,7 @@ Ho usato un Raspberry PI Zero 2W
 
 <img width="350" alt="Raspberry PI Zero 2W" src="https://github.com/mk4001/Tru-Control/blob/main/images/zero2-hero.webp">
 
-ovviamente collegato al sistema TRuma Combi™ mediante un'interfaccia UART-LIN "FST T151".
+Collegato alla Truma Combi™ mediante un'interfaccia UART-LIN "FST T151".
 <img width="350" alt="FST T151" src="https://github.com/mk4001/Tru-Control/blob/main/images/FST%20T151.jpg">
 
 Grazie all'hardware impiegato, ho potuto sviluppare l'applicazione che potesse utilizzare tutte le potenzialità radio del Raspberry ossia: Wi-Fi e Bluetooth, dando così la possibilità all'utente di potersi collegare sia da remoto attraverso un broker MQTT in cloud, sia tramite Bluetooth Low Energy (BLE) direttamente sul proprio RV, Camper, VAN, senza bisogno di impiegare alcuna infrastruttura come un riuter di bordo o altro strumento per la connettività verso Internet.
