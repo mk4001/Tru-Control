@@ -1,6 +1,6 @@
 # Tru-Control
 
-Questo progetto è stato ispirato al lavoro di DamielFett e più precisamente a questo:
+Questo progetto è stato ispirato dal lavoro di DamielFett e più precisamente a questo:
 
 https://github.com/danielfett/inetbox.py
 
@@ -21,4 +21,4 @@ Quello che a mio avviso serviva per rendere davvero fruibile l'applicazione "ine
 
 Io ho usato un Raspberry PI Zero 2W 
 
-
+![alt text]images/zero2-hero.webp
