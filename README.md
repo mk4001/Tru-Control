@@ -34,7 +34,7 @@ Quando avrete terminato con successo l'installazione e i test di HW/SW del proto
 
 **mqtt_bridge_complete.py**  - Gateway MQTT verso il broker in cloud
 
-Per consentire l'accesso del broker MQTT mosquitto installato localemnte sul Raspberry, occorrono duplicare alcuni topic su un MQTT broker in cloud.
+Per consentire l'accesso remoto del broker MQTT mosquitto installato localemnte sul Raspberry, occorre duplicare alcuni topic su un MQTT broker in cloud.
 
 Io ne ho provati 2, gratuiti, che se non si fa un uso estremamente intensivo dell'app posso tranquillamente servire al nostro scopo, e sono:
 
