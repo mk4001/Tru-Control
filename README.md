@@ -1,6 +1,6 @@
 # Tru-Control
 
-Questo progetto è stato ispirato dal lavoro di DamielFett e più precisamente a questo:
+This project was inspired by the work of DamielFett and more precisely by this:
 
 https://github.com/danielfett/inetbox.py
 
@@ -15,10 +15,10 @@ The information provided here is shared solely for learning and understanding ve
 
 ------------------------------------------------------------------------------------
 
-Il deisderio di avere un app (IOS only for now) che funzionasse in simbiosi al lavoro di DanielFett mi ha ispirato a tal punto di aver creto l'interfaccia giusta per tutti gli utenti Truma Combi™.
+IThe desire to have an app (IOS only for now) that worked in symbiosis with DanielFett's work inspired me to the point of having created the right interface for all Truma Combi™ users.
 
-Quello che a mio avviso serviva per rendere davvero fruibile l'applicazione "inetbox.py" che gira su Raspberry PI era un'app nativa che potesse consentire l'accesso sia locale che remoto alla gestione della Truma.
+What in my opinion was needed to make the "inetbox.py" application that runs on Raspberry PI really usable was a native app that could allow both local and remote access to Truma management.
 
-Io ho usato un Raspberry PI Zero 2W 
+I used a Raspberry PI Zero 2W
 
 ![images/zero2-hero.webp](https://github.com/mk4001/Tru-Control/blob/main/images/zero2-hero.webp)
