@@ -46,10 +46,8 @@ occorre ora configurare il file: "config.json" per completare le credenziali d'a
 
 nella directory "Python add ons" ci sono 2 file di configurazione d'esempio sia per HiveMQ che per EMQX.
 
-**
-sudo systemctl daemon-reload
-sudo systemctl enable --now mqtt-bridge
-sudo systemctl status mqtt-bridge
+**sudo systemctl daemon-reload**
+**sudo systemctl enable --now mqtt-bridge**
+**sudo systemctl status mqtt-bridge**
 
-sudo journalctl -u mqtt-bridge -f
-**
+**sudo journalctl -u mqtt-bridge -f**
