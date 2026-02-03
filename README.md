@@ -131,6 +131,14 @@ The **Tru-Control** iOS app acts as the primary user interface for the system.
 
 ---
 
+## Documentation
+
+- 📦 Installation: see INSTALLATION.md
+- ⚡ Quick Start: see Quick Start
+- 🛠 Troubleshooting: see docs/TROUBLESHOOTING.md
+
+---
+
 ## Final Notes
 
 If you enjoy experimenting with open-source projects, vehicle electronics, and practical DIY solutions, Tru-Control aims to provide a solid and extensible foundation.
