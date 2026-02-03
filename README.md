@@ -32,7 +32,7 @@ Quando avrete terminato con successo l'installazione e i test di HW/SW del proto
 
 ------------------------------------------------------------------------------------
 
-<img width="40" alt="WiFi" src="https://github.com/mk4001/Tru-Control/blob/main/images/WiFi%20icon.jpg">
+<img width="50" alt="WiFi" src="https://github.com/mk4001/Tru-Control/blob/main/images/WiFi%20icon.jpg">
 
 **mqtt_bridge_complete.py**  - Gateway MQTT verso il broker in cloud
 
@@ -79,7 +79,7 @@ A qusto punto lo script "mqtt_bridge_complete.py", divenuto un servizio di siste
 
 ------------------------------------------------------------------------------------
 
-<img width="40" alt="BLE" src="https://github.com/mk4001/Tru-Control/blob/main/images/BLE%20icon.png">
+<img width="50" alt="BLE" src="https://github.com/mk4001/Tru-Control/blob/main/images/BLE%20icon.png">
 
 **truma_ble_server.py** - Server BLE per funzionamento in locale senza alcuna infrastruttura (peer 2 peer)
 
