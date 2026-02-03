@@ -12,5 +12,5 @@ Quello che a mio avviso serviva per rendere davvero fruibile l'applicazione "ine
 
 Io ho usato un Raspberry PI Zero 2W 
 
-images/zero2-hero.webp
+[images/zero2-hero.webp](https://github.com/mk4001/Tru-Control/blob/527e8870309574715a9471c1269fd78b2ef7d602/images/zero2-hero.webp)
 
