@@ -3,8 +3,6 @@
 <img width="150" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/images/New-1024.png">
 Available on Apple Store 
 
-<img width="250" alt="Tru-Control" src="https://github.com/mk4001/Tru-Control/blob/main/Screen%20Shots/IMG_2305.jpeg">
-
 Questo progetto è stato ispirato dal lavoro di DamielFett e più precisamente da questo:
 
 https://github.com/danielfett/inetbox.py
