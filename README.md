@@ -141,18 +141,18 @@ A qusto punto lo script "truma_ble_server.py", divenuto un servizio di sistema c
 
 **Configurazione app [Tru-Control]**
 
-Una volta scaricata l'app [Tru-Control] dall'App-Store di Apple (per iPhone e iPad) occorre solamente completar la configurazione che riguarda il broker in cloud.
+Una volta scaricata l'app [Tru-Control] dall'App-Store di Apple (per iPhone e iPad) occorre solamente completare la configurazione che riguarda il broker in cloud.
 
 Nella Sezione [Settings] fornite le credenziali del vostro MQTT broker in cloud salvate e provate.
 
 Qualche delucidazione in merito all'app è d'obbligo: 
-- TruControl consente di operare sia in WiFi che in BLE.
-- Entrambe le modalità consentono la ricezione dei valori di status della Truma™ in modo istantaneo.
-- Per operare qualsiasi comando è necessario che l'app sia in collegamento con il Raspberri o in WiFi o in BLE.
+- TruControl consente di operare sia in 3G/4G/5G/WiFi che in BLE.
+- Entrambe le modalità consentono la ricezione dei valori di status della Truma Combi™ in modo istantaneo.
+- Per operare qualsiasi comando è necessario che l'app sia in collegamento con il Raspberri o in modalità "Internet" o in modalità "BLE".
 - Se la connessione via BLE è scarsa (troppo lontano dal Raspberry) sarà possibile ricevere i dati ma non sarà consentito operare alcun comando per questioni di sicurezza.
-- Per cominciare qualsiasi operazione sulla Truma Combi™ occorre per prima cosa scegliere la modalità di energia nella sezione [Power MIX] poi si potrà proseguire con i comandi in [Hot Water] o in [Inside Temp]
-- Per la natura della connettività LIN-BUS con la Truma Combi™ i comandi impartiti dall'APP non vengono subito attivati e le conseguenti risposte dalla Truma Combi™ verranno visualizzate un un ritardo di ca 5 sec.
-- Eventuali errori che si verificano sulla Truma Combi™ verranno mostrati sul display dell'APP. Cliccando sul messaggio d'errore si potrà leggerne la descrizione esatta.
+- Per cominciare qualsiasi operazione sulla Truma Combi™ occorre per prima cosa scegliere la modalità di energia nella sezione [Power MIX], poi si potrà proseguire con i comandi in [Hot Water] o in [Inside Temp]
+- Per la natura della connettività LIN-BUS con la Truma Combi™ i comandi impartiti dall'APP non vengono subito eseguiti e le conseguenti risposte dalla Truma Combi™ verranno visualizzate un un ritardo di ca 5 sec.
+- Eventuali errori che si verificano sulla Truma Combi™ verranno mostrati sul display dell'APP. Cliccando sul messaggio d'errore si potrà leggerne la descrizione completa.
 - Nella sezione [Settings] c'è [View Debug Log] che consente di visualizzare i log di connessione sia per BLE che per Internet (MQTT).
 
-Spero possiate trascorrere delle piacevoli vacanze felici del fatto che oera potrete controllare la vostra Truma Combi™ direttamente dal vostro iPhone ma soprattutto da ogni luogo vi troviate.
+Spero possiate trascorrere delle piacevoli vacanze felici del fatto che ora potrete controllare la vostra Truma Combi™ direttamente dal vostro iPhone ma soprattutto da ogni luogo vi troviate.
