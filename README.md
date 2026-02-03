@@ -90,12 +90,19 @@ modificare quindi il relativo file:
 **sudo nano /etc/bluetooth/main.conf**
 
 …
+
 [General]
+
 Name = Truma-BLE
+
 Class = 0x000100
+
 DiscoverableTimeout = 0
+
 Discoverable = yes
+
 AlwaysPairable = yes
+
 …
 
 **sudo reboot**
