@@ -134,3 +134,7 @@ A qusto punto lo script "truma_ble_server.py", divenuto un servizio di sistema c
 
 **sudo journalctl -u truma_ble_server.service -f**
 
+------------------------------------------------------------------------------------
+<img width="50" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/images/App_Store_(iOS).svg.png">
+
+**Configurazione app [Tru-Control]**
