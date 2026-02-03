@@ -32,23 +32,24 @@ Quando avrete terminato con successo l'installazione e i test di HW/SW del proto
 
 ------------------------------------------------------------------------------------
 
-**mqtt_bridge_complete.py** Gateway MQTT verso broker in cloud
+**mqtt_bridge_complete.py**  - Gateway MQTT verso broker in cloud
 
 Questo script deve essere copiato nella directory "/usr/local/bin/mqtt_bridge_complete.py", quindi accorre aggiungere i permessi per l'esecuzione:
 
-sudo chmod +x /usr/local/bin/mqtt_bridge_complete.py
+**sudo chmod +x /usr/local/bin/mqtt_bridge_complete.py**
 
 Un shell script "mqtt-bridge.service.sh" consente di creare il servizio relativo allo sctipt: "mqtt_bridge_complete.py", una volta eseguito proseguiamo con:
 
 occorre ora configurare il file: "config.json" per completare le credenziali d'accesso ai broker in cloud, con il seguente comando:
 
-sudo nano /etc/mqtt_bridge/config.json
+**sudo nano /etc/mqtt_bridge/config.json**
 
 nella directory "Python add ons" ci sono 2 file di configurazione d'esempio sia per HiveMQ che per EMQX.
 
-
+**
 sudo systemctl daemon-reload
 sudo systemctl enable --now mqtt-bridge
 sudo systemctl status mqtt-bridge
 
 sudo journalctl -u mqtt-bridge -f
+**
