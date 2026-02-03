@@ -154,5 +154,8 @@ Qualche delucidazione in merito all'app è d'obbligo:
 - Per la natura della connettività LIN-BUS con la Truma Combi™ i comandi impartiti dall'APP non vengono subito eseguiti e le conseguenti risposte dalla Truma Combi™ verranno visualizzate un un ritardo di ca 5 sec.
 - Eventuali errori che si verificano sulla Truma Combi™ verranno mostrati sul display dell'APP. Cliccando sul messaggio d'errore si potrà leggerne la descrizione completa.
 - Nella sezione [Settings] c'è [View Debug Log] che consente di visualizzare i log di connessione sia per BLE che per Internet (MQTT).
+- L'app fornisce un utile livello di carica della batteria del leisure, tarata su una scala per batterie AGM, mostra: tensione, percentuale di carica, cambiando colore e status a seconda della fascia di carica raggiunta.
+- L'app lavora in background per favorire una migliore experience all'utente. Questa funzionalità non compromette lo stato della batteria dell'iPhone in maniera significativa specialmente se utilizzata in locale (BLE) il consumo è praticamente impercettibile.
 
-Spero possiate trascorrere delle piacevoli vacanze felici del fatto che ora potrete controllare la vostra Truma Combi™ direttamente dal vostro iPhone ma soprattutto da ogni luogo vi troviate.
+
+Spero possiate trascorrere delle piacevoli viaggi felici a bordo dei vostri mezzi grazie al fatto che ora potrete controllare la vostra Truma Combi™ direttamente dal vostro iPhone ma soprattutto da ogni luogo vi troviate.
