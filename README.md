@@ -24,11 +24,31 @@ Ho usato un Raspberry PI Zero 2W
 
 Grazie all'hardware impiegato, ho potuto sviluppare l'applicazione che potesse utilizzare tutte le potenzialità radio del Raspberry ossia: Wi-Fi e Bluetooth, dando così la possibilità all'utente di potersi collegare sia da remoto attraverso un broker MQTT in cloud, sia tramite Bluetooth Low Energy (BLE) direttamente sul proprio RV, Camper, VAN, senza bisogno di impiegare alcuna infrastruttura come un riuter di bordo o altro strumento per la connettività verso Internet.
 
-------------------------------------------------------------------------------------
-
 Per quanto concerne l'installazione del Raspberry, dell'interfaccia LIN-UART e del ssoftware di base vi rimando al link originale di DanielFett:
 
 https://github.com/danielfett/inetbox.py
 
-Mentre per quanto concernono gli script Python che fungono da gateway sia verso i broker MQTT in cloud che verso l'interfaccia BLE del raspberry, seguite quanto segue:
+Quando avrete terminato con successo l'installazione e i test di HW/SW del protocollo "inetbox.py" dovrete aggiungere i seguenti script Python che fungono da gateway sia verso i broker MQTT in cloud che verso l'interfaccia BLE del raspberry.
 
+------------------------------------------------------------------------------------
+
+**mqtt_bridge_complete.py** Gateway MQTT verso broker in cloud
+
+Questo script deve essere copiato nella directory "/usr/local/bin/mqtt_bridge_complete.py", quindi accorre aggiungere i permessi per l'esecuzione:
+
+sudo chmod +x /usr/local/bin/mqtt_bridge_complete.py
+
+Un shell script "mqtt-bridge.service.sh" consente di creare il servizio relativo allo sctipt: "mqtt_bridge_complete.py", una volta eseguito proseguiamo con:
+
+occorre ora configurare il file: "config.json" per completare le credenziali d'accesso ai broker in cloud, con il seguente comando:
+
+sudo nano /etc/mqtt_bridge/config.json
+
+nella directory "Python add ons" ci sono 2 file di configurazione d'esempio sia per HiveMQ che per EMQX.
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now mqtt-bridge
+sudo systemctl status mqtt-bridge
+
+sudo journalctl -u mqtt-bridge -f
