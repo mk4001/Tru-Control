@@ -1,6 +1,6 @@
 # Tru-Control 
 
-Available on Apple Store <img width="50" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/images/App_Store_(iOS).svg.png">
+Available on Apple Store <img width="150" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/images/New-1024.png">
 
 
 <img width="250" alt="Tru-Control" src="https://github.com/mk4001/Tru-Control/blob/main/Screen%20Shots/IMG_2305.jpeg">
@@ -140,3 +140,5 @@ A qusto punto lo script "truma_ble_server.py", divenuto un servizio di sistema c
 <img width="50" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/images/App_Store_(iOS).svg.png">
 
 **Configurazione app [Tru-Control]**
+
+Una volta scaricata l'app [Tru-Control] dall'App-Store di Apple (per iPhone e iPad)
