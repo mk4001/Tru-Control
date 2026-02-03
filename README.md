@@ -34,19 +34,20 @@ Quando avrete terminato con successo l'installazione e i test di HW/SW del proto
 
 **mqtt_bridge_complete.py**  - Gateway MQTT verso il broker in cloud
 
-Per consentire l'accesso remoto del broker MQTT mosquitto installato localemnte sul Raspberry, occorre duplicare alcuni topic su un MQTT broker in cloud.
+Per consentire l'accesso remoto del broker MQTT mosquitto installato localmente sul Raspberry, occorre duplicare alcuni topic su un MQTT broker in cloud.
 
-Io ne ho provati 2, gratuiti, che se non si fa un uso estremamente intensivo dell'app posso tranquillamente servire al nostro scopo, e sono:
+Io ne ho provati 2, gratuiti, che se non si fa un uso estremamente intensivo dell'app possono tranquillamente servire al nostro scopo, e sono:
 
 https://www.emqx.com/en
 
 https://www.hivemq.com
 
+
 Una volta scelto il vostro MQTT broker in cloud e creato un cluster gratuito, riceverete le credenziali per l'accesso remoto: conservatele con cura, ci serviranno tra poco.
 
 Cominciamo quindi ad installare lo script che funge da gateway tra il broker Mosquitto locale sul Raspberry e il broker MQTT in cloud che avete scelto.
 
-Nella directory: "Python add ons", troverete lo script in questione; esso deve essere copiato nella directory "/usr/local/bin/mqtt_bridge_complete.py" del Raspberry:
+Nella directory: "Python add ons", troverete lo script in questione; esso deve essere copiato nella directory "/usr/local/bin/mqtt_bridge_complete.py" del Raspberry come segue:
 
 **sudo nano /usr/local/bin/mqtt_bridge_complete.py**
 
@@ -70,11 +71,36 @@ Quando avrete completato la congiurazione proseguimo quindi con:
 
 **sudo systemctl status mqtt-bridge**
 
-A qusto punto lo script "mqtt_bridge_complete.py" divenuto un servizio di sistema chiamato: "mqtt-bridge" dovrebbe essere up & running e lo potete verificare con il seguente comando:
+A qusto punto lo script "mqtt_bridge_complete.py", divenuto un servizio di sistema chiamato: "mqtt-bridge" dovrebbe essere up & running e lo potete verificare con il seguente comando:
 
 **sudo journalctl -u mqtt-bridge -f**
 
 ------------------------------------------------------------------------------------
 
 **truma_ble_server.py** - Server BLE per funzionamento in locale senza alcuna infrastruttura (peer 2 peer)
+
+Per consentire la connettività tra l'app IOS e il raspberry in modo diretto, senza l'ausilio di router o accessori vari di comunicazione verso internet, bisogna installare uno script python che troverete sempre in "truma_ble_server.py" e si chiama: "truma_ble_server.py".
+
+Prima di procedere all'installazione dello script, occorre attivare il servizio bluetooth sul raspberry, come segue:
+
+**sudo apt-get install -y bluetooth bluez python3-dbus python3-gi**
+
+modificare quindi il relativo file: 
+
+**sudo nano /etc/bluetooth/main.conf**
+
+…
+[General]
+Name = Truma-BLE
+Class = 0x000100
+DiscoverableTimeout = 0
+Discoverable = yes
+AlwaysPairable = yes
+…
+
+**sudo reboot**
+
+Quindi, come per lo script precedente copiamolo con il seguente comando, sul Raspberry:
+
+**sudo nano /usr/local/bin/truma_ble_server.py**
 
