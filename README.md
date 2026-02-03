@@ -1,4 +1,5 @@
-# Tru-Control
+# Tru-Control - Available on Apple Store <img width="250" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/Screen%20Shots/IMG_2305.jpeg">
+
 
 <img width="250" alt="Tru-Control" src="https://github.com/mk4001/Tru-Control/blob/main/Screen%20Shots/IMG_2305.jpeg">
 
