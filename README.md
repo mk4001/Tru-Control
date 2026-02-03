@@ -5,7 +5,7 @@ Available on Apple Store
 
 ## Overview
 
-**Tru-Control** is an open-source project designed to extend and simplify access to Truma Combi™ systems by combining existing community work with a modern, native iOS application.
+**Tru-Control** is a project designed to extend and simplify access to Truma Combi™ systems by combining existing community work with a modern, native iOS application.
 
 The project builds upon the excellent reverse‑engineering effort by **DanielFett**, in particular the `inetbox.py` project:
 
