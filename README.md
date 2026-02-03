@@ -32,7 +32,7 @@ Quando avrete terminato con successo l'installazione e i test di HW/SW del proto
 
 ------------------------------------------------------------------------------------
 
-![WiFi](https://github.com/mk4001/Tru-Control/blob/b3e17bef1c831712c036104215b137a97956bd5e/images/BLE%20icon.png)
+<img width="421" alt="WiFi" src="[https://github.com/user-attachments/assets/813c13d5-f577-4c91-ae50-05b2e33ad62f](https://github.com/mk4001/Tru-Control/blob/b015f52ab7d1f8d870dad941923b8fe9f6847a7a/images/WiFi%20icon.jpg)">
 
 **mqtt_bridge_complete.py**  - Gateway MQTT verso il broker in cloud
 
