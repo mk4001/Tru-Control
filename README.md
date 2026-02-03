@@ -1,6 +1,6 @@
 # Tru-Control
 
-This project was inspired by the work of DamielFett and more precisely by this:
+Questo progetto è stato ispirato dal lavoro di DamielFett e più precisamente da questo:
 
 https://github.com/danielfett/inetbox.py
 
