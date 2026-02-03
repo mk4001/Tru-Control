@@ -91,15 +91,10 @@ modificare quindi il relativo file:
 
 …
 [General]
-
 Name = Truma-BLE
-
 Class = 0x000100
-
 DiscoverableTimeout = 0
-
 Discoverable = yes
-
 AlwaysPairable = yes
 …
 
