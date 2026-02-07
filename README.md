@@ -134,8 +134,8 @@ The **Tru-Control** iOS app acts as the primary user interface for the system.
 ## Documentation
 
 - 📦 Installation: see INSTALLATION.md
-- ⚡ Quick Start: see Quick Start
-- 🛠 Troubleshooting: see docs/TROUBLESHOOTING.md
+- ⚡ Quick Start: see Quick_Start.md
+- 🛠 Troubleshooting: see TROUBLESHOOTING.md
 
 ---
 
