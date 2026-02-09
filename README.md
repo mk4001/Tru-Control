@@ -141,7 +141,7 @@ The **Tru-Control** iOS app acts as the primary user interface for the system.
 
 ## Simulator
 
-There is a real Truma Combi™ simulator in the file "Truma Simulator x Tru-Control.json" that you can use on your local MQTT broker and Node-RED in ordert to checak all the APP Features
+There is a real Truma Combi™ simulator in the file "Truma Simulator x Tru-Control.json" that you can use on your local MQTT broker and Node-RED in ordert to check all the APP Features
 
 ---
 
