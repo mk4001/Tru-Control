@@ -1,99 +1,154 @@
-# RV-Control 
+# Tru-Control 
 
+<img width="150" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/images/New-1024.png">
+Available on Apple Store 
 
-The Raspberry Pi acts as a **translation layer** between the vehicle's LIN-BUS network and standard wireless protocols. No modification to the Truma hardware is required.
+## Overview
 
----
+**Tru-Control** is a project designed to extend and simplify access to Truma Combi™ systems by combining existing community work with a modern, native iOS application.
 
-## ✅ Requirements
+The project builds upon the excellent reverse‑engineering effort by **DanielFett**, in particular the `inetbox.py` project:
 
-- A **legally purchased** Truma Combi™ system installed in your vehicle  
-- A Raspberry Pi (any model with wireless capability)  
-- A LIN-BUS transceiver (e.g. Waveshare, USB-to-LIN)  
-- Basic familiarity with Raspberry Pi setup and command line
+https://github.com/danielfett/inetbox.py
 
----
-
-## 📲 Features
-
-- **Native iOS app** with clean, modern interface  
-- **Real-time status monitoring** (temperature, flame state, error codes)  
-- **Full control** of heating modes and temperature setpoints  
-- **Dual connectivity**:
-  - Bluetooth Low Energy for direct, offline use inside the vehicle
-  - MQTT over Internet for remote monitoring (optional)
-- **Leisure battery monitoring** (AGM calibrated)
-- **Safety-first logic**: commands are disabled if signal quality is insufficient
+The main goal of Tru-Control is to make this ecosystem more accessible and user-friendly by providing both **local** and **remote** control through widely available hardware and open technologies.
 
 ---
 
-## 🧪 Compatibility
+## Disclaimer
 
-- ✅ Truma Combi 4 (CP plus)
-- ✅ Truma Combi 6 (CP plus)
-- ⚠️ Other Truma LIN-BUS devices: not officially tested, but may work
+This project is provided **for educational and recreational purposes only**.
 
-This project is **not affiliated with, endorsed by, or sponsored by Truma Gerätetechnik GmbH & Co. KG**. All product names and trademarks are the property of their respective owners.
+All intellectual property, trademarks, and copyrights related to LIN‑BUS codes and protocols remain the property of **Truma Gerätetechnik GmbH & Co. KG (Putzbrunn, Germany)**.
 
----
+This project does **not** aim to infringe on Truma’s rights, nor to enable unauthorized access, modification, or misuse of proprietary systems. All information shared here is intended solely to support learning and understanding of vehicle communication protocols.
 
-## 🚦 Quick Start
-
-1. **Prepare your Raspberry Pi**  
-   Install Raspberry Pi OS Lite, enable SSH, and connect your LIN-BUS interface.
-
-2. **Install the gateway services**  
-   Run the automated setup script included in this repository.  
-   This will install and configure:
-   - BLE advertisement daemon
-   - MQTT bridge (optional)
-
-3. **Install the iOS app**  
-   Download Tru-Control from the Apple App Store.
-
-4. **Connect**  
-   Open the app. Your gateway will appear automatically via BLE scanning.  
-   Tap to connect – no cloud account required.
-
-Detailed step-by-step guides are available in:
-- [`INSTALLATION.md`](INSTALLATION.md)
-- [`Quick_Start.md`](Quick_Start.md)
+**Use this project at your own risk.**
 
 ---
 
-## 🔧 Development & Contributions
+## Motivation
 
-This project is maintained by independent developers and **welcomes contributions** that:
+While `inetbox.py` already provides a powerful software interface for interacting with Truma systems via a Raspberry Pi, its usability in real‑world scenarios is limited without a dedicated client.
 
-- Improve stability and error handling  
-- Add support for additional LIN-BUS devices  
-- Enhance the iOS user experience  
-- Expand documentation
+Tru-Control was created to fill this gap by introducing:
 
-We are particularly interested in **collaborating with Truma** should they wish to provide official guidance or documentation. We believe in building bridges, not walls.
+- A **native iOS application** (currently iOS only)
+- Simple **local access** directly from the vehicle
+- Optional **remote access** without requiring complex onboard infrastructure
 
----
-
-## 📜 License
-
-MIT License – see [LICENSE](LICENSE) file.
+The result is a more practical and flexible way to interact with a Truma Combi™ system, both on-site and from anywhere.
 
 ---
 
-## 🙏 Acknowledgements
+## System Architecture (High Level)
 
-Tru-Control builds upon years of community effort to understand and document **LIN-BUS communication in recreational vehicles**. Special thanks to everyone who has contributed to this knowledge base, and to the early testers who provided invaluable feedback.
+The project is based on a compact and low-power setup using a Raspberry Pi connected to the Truma Combi™ via a LIN interface.
+
+Thanks to the Raspberry Pi’s built-in wireless capabilities, Tru-Control supports two complementary usage modes:
+
+- **Local mode**: direct peer‑to‑peer communication using Bluetooth Low Energy (BLE)
+- **Remote mode**: cloud-based communication via an MQTT broker
+
+No additional onboard routers or permanent Internet connections are required for local operation.
 
 ---
 
-## ⚠️ Important Disclaimer
+## Installation Philosophy
 
-**This software is intended for personal, non-commercial use by individuals who own the corresponding Truma hardware.**
+Tru-Control does **not** replace `inetbox.py`. Instead, it extends it.
 
-- You are responsible for your own installation and use.  
-- No warranty or liability is provided – use at your own risk.  
-- This project does not grant any rights to Truma's intellectual property.  
-- If you are a commercial entity, please contact Truma directly for licensing.
+Users are expected to:
 
+1. Successfully install and test `inetbox.py` on their hardware
+2. Add the Tru-Control gateway components
+3. Choose whether to enable local access, remote access, or both
 
+Detailed installation steps for the base system are intentionally delegated to the original `inetbox.py` documentation to avoid duplication and ensure compatibility.
 
+---
+
+## Gateway Components
+
+### MQTT Gateway (Remote Access)
+
+The MQTT gateway enables secure remote access by bridging a local MQTT broker running on the Raspberry Pi with a cloud-based MQTT broker.
+
+This allows the Tru-Control iOS app to communicate with the system from anywhere, using standard Internet connectivity.
+
+Several free MQTT cloud services are sufficient for typical personal use and were successfully tested during development.
+
+Once configured, the gateway runs as a background service and operates transparently.
+
+---
+
+### BLE Server (Local Access)
+
+For users who prefer a fully local setup, Tru-Control includes a BLE server component.
+
+This enables direct communication between the iOS app and the Raspberry Pi:
+
+- No Internet connection required
+- No router or external network hardware needed
+- Ideal for on‑site control inside an RV, camper, or van
+
+The BLE service runs continuously in the background and prioritizes reliability and safety.
+
+---
+
+## iOS App: Tru-Control
+
+The **Tru-Control** iOS app acts as the primary user interface for the system.
+
+### Key Characteristics
+
+- Works over **BLE** (local) and **Internet** (remote)
+- Real-time display of Truma Combi™ status information
+- Safety‑aware command handling
+- Designed for everyday, practical use
+
+### Usage Notes
+
+- The app must be connected to the Raspberry Pi (locally or remotely) to send commands
+- If BLE signal quality is insufficient, commands are intentionally disabled while status data remains visible
+- Due to LIN‑BUS communication characteristics, command execution is not instantaneous and feedback may be delayed by a few seconds
+- Errors reported by the Truma system are displayed directly in the app with detailed descriptions
+
+### Additional Features
+
+- Debug logging for both BLE and Internet connections
+- Leisure battery monitoring (AGM-calibrated): voltage, charge percentage, and status
+- Background operation optimized to minimize iOS battery consumption, especially in BLE mode
+
+---
+
+## Project Goals
+
+- Promote **open knowledge** around vehicle communication systems
+- Build on and contribute to existing community projects
+- Keep hardware requirements minimal and affordable
+- Prioritize safety, transparency, and user control
+
+---
+
+## Documentation
+
+- 📦 Installation: see INSTALLATION.md
+- ⚡ Quick Start: see Quick_Start.md
+- 🛠 Troubleshooting: see TROUBLESHOOTING.md
+
+---
+
+## Simulator
+
+There is a real Truma Combi™ simulator in the file "Truma Simulator x Tru-Control.json" that you can use on your local MQTT broker and Node-RED in ordert to check all the APP Features
+
+---
+
+## Final Notes
+
+If you enjoy experimenting with open-source projects, vehicle electronics, and practical DIY solutions, Tru-Control aims to provide a solid and extensible foundation.
+
+May it help you enjoy safer, smarter, and more comfortable travels—knowing that your Truma Combi™ is always within reach, whether you are nearby or far away.
+
+Contributions, feedback, and constructive discussion are always welcome.
