@@ -1,7 +1,8 @@
 # Tru-Control 
 
-<img width="150" alt="Apple Store" src="https://github.com/mk4001/Tru-Control/blob/main/images/New-1024.png">
-Available on Apple Store 
+<img width="150" alt="Tru-Control app icon" src="https://raw.githubusercontent.com/mk4001/Tru-Control/main/images/New-1024.png">
+
+*iOS app currently under App Store review — not yet publicly available.*
 
 ## Overview
 
@@ -21,7 +22,7 @@ This project is provided **for educational and recreational purposes only**.
 
 All intellectual property, trademarks, and copyrights related to LIN‑BUS codes and protocols remain the property of **Truma Gerätetechnik GmbH & Co. KG (Putzbrunn, Germany)**.
 
-This project does **not** aim to infringe on Truma’s rights, nor to enable unauthorized access, modification, or misuse of proprietary systems. All information shared here is intended solely to support learning and understanding of vehicle communication protocols.
+This project does **not** aim to infringe on Truma's rights, nor to enable unauthorized access, modification, or misuse of proprietary systems. All information shared here is intended solely to support learning and understanding of vehicle communication protocols.
 
 **Use this project at your own risk.**
 
@@ -45,7 +46,7 @@ The result is a more practical and flexible way to interact with a Truma Combi�
 
 The project is based on a compact and low-power setup using a Raspberry Pi connected to the Truma Combi™ via a LIN interface.
 
-Thanks to the Raspberry Pi’s built-in wireless capabilities, Tru-Control supports two complementary usage modes:
+Thanks to the Raspberry Pi's built-in wireless capabilities, Tru-Control supports two complementary usage modes:
 
 - **Local mode**: direct peer‑to‑peer communication using Bluetooth Low Energy (BLE)
 - **Remote mode**: cloud-based communication via an MQTT broker
@@ -141,7 +142,7 @@ The **Tru-Control** iOS app acts as the primary user interface for the system.
 
 ## Simulator
 
-There is a real Truma Combi™ simulator in the file "Truma Simulator x Tru-Control.json" that you can use on your local MQTT broker and Node-RED in ordert to check all the APP Features
+A Truma Combi™ simulator profile for local testing (local MQTT broker + Node-RED) is planned but not yet published in this repository. This section will be updated once the file is available.
 
 ---
 
