@@ -144,7 +144,12 @@ The **Tru-Control** iOS app acts as the primary user interface for the system.
 
 ## Simulator
 
-A Truma Combi™ simulator profile for local testing (local MQTT broker + Node-RED) is planned but not yet published in this repository. This section will be updated once the file is available.
+A Truma Combi™ simulator profile for local testing (local MQTT broker + Node-RED) is AVAILABLE on this Repository.
+
+https://github.com/mk4001/MosquittoPI_TLS
+
+There you will find also the way to install your private MQTT Broker on internet for free using TLS and CloudFlare Certificates-
+
 
 ---
 
