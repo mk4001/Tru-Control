@@ -57,7 +57,7 @@ Thanks to the Raspberry Pi's built-in wireless capabilities, Tru-Control support
 
 No additional onboard routers or permanent Internet connections are required for local operation.
 
-https://github.com/mk4001/Tru-Control/blob/main/architecture.svg
+<img width="150" alt="Tru-Control app icon" src="https://raw.githubusercontent.com/mk4001/Tru-Control/main/architecture.svg">
 
 ---
 
