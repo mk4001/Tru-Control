@@ -2,7 +2,9 @@
 
 <img width="150" alt="Tru-Control app icon" src="https://raw.githubusercontent.com/mk4001/Tru-Control/main/images/New-1024.png">
 
-*iOS app currently under App Store review — not yet publicly available.*
+*Download from App Store*
+
+https://apps.apple.com/app/tru-control/id6758611832
 
 ## Overview
 
