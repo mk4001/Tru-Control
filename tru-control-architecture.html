@@ -1,0 +1,285 @@
+<title>Tru-Control Architecture</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --border: #e3e6eb;
+    --text: #14181f;
+    --text-muted: #5b6472;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --code-bg: #f0f2f5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14161a;
+      --surface: #1b1e24;
+      --border: #2c3038;
+      --text: #e7e9ec;
+      --text-muted: #9aa1ac;
+      --accent: #6fa1ff;
+      --accent-soft: #1c2b4a;
+      --code-bg: #23262d;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #14161a;
+    --surface: #1b1e24;
+    --border: #2c3038;
+    --text: #e7e9ec;
+    --text-muted: #9aa1ac;
+    --accent: #6fa1ff;
+    --accent-soft: #1c2b4a;
+    --code-bg: #23262d;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+  }
+
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .lede {
+    max-width: 62ch;
+    font-size: 16.5px;
+    color: var(--text-muted);
+  }
+
+  code {
+    font-family: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 0.92em;
+    background: var(--code-bg);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    color: var(--text);
+  }
+
+  figure {
+    margin: 8px 0 0;
+    padding: 0;
+  }
+
+  .diagram-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    overflow-x: auto;
+  }
+
+  .diagram-card svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 640px;
+    border-radius: 6px;
+  }
+
+  figcaption {
+    margin-top: 12px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    max-width: 68ch;
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .legend-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .legend-item code {
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .legend-item p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .note {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+
+  .note strong { color: var(--text); }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    font-size: 14px;
+  }
+
+  .links a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .links a:hover,
+  .links a:focus-visible {
+    text-decoration: underline;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  footer {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+</style>
+
+<main>
+  <div class="eyebrow">Tru-Control &middot; Gateway docs</div>
+  <h1>How the whole system fits together</h1>
+  <p class="lede">
+    The heater talks to a Raspberry Pi over its LIN-UART service port. From there,
+    the Tru-Control iPhone app can reach that gateway two different ways &mdash;
+    directly over Bluetooth with no internet involved, or remotely through an
+    MQTT broker you either self-host or rent from a cloud provider.
+  </p>
+
+  <figure>
+    <div class="diagram-card">
+      <svg viewBox="0 0 1060 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Tru-Control app reaches the Raspberry Pi gateway either directly over Bluetooth, local and offline, or through an MQTT broker that is either self-hosted or cloud-hosted, remote over the internet.">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#1f2937"/>
+          </marker>
+        </defs>
+
+        <rect x="0" y="0" width="1060" height="420" fill="#ffffff"/>
+
+        <rect x="20" y="200" width="160" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+        <text x="100" y="234" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">Truma Combi</text>
+        <text x="100" y="252" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">Heater</text>
+
+        <line x1="180" y1="240" x2="234" y2="240" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="207" y="225" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">LIN-UART</text>
+        <text x="207" y="238" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">(FST T151)</text>
+
+        <rect x="240" y="110" width="260" height="260" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+        <text x="370" y="138" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">Raspberry Pi Gateway</text>
+        <line x1="258" y1="150" x2="482" y2="150" stroke="#d1d5db" stroke-width="1"/>
+
+        <text x="258" y="178" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">inetbox.py</text>
+        <text x="258" y="193" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6b7280">reads heater status via LIN-UART</text>
+
+        <text x="258" y="223" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">truma_ble_server.py</text>
+        <text x="258" y="238" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6b7280">exposes a BLE GATT server</text>
+
+        <text x="258" y="268" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">mqtt_bridge_complete.py</text>
+        <text x="258" y="283" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6b7280">publishes status to MQTT</text>
+
+        <line x1="500" y1="160" x2="604" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="552" y="148" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">MQTT publish</text>
+
+        <line x1="500" y1="320" x2="894" y2="320" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="697" y="305" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">BLE &#183; direct &#183; &#8804;30m &#183; no internet</text>
+
+        <rect x="610" y="60" width="200" height="200" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+        <text x="710" y="85" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">MQTT Broker &#8212; pick one</text>
+        <line x1="625" y1="97" x2="795" y2="97" stroke="#d1d5db" stroke-width="1"/>
+
+        <rect x="625" y="108" width="170" height="58" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="710" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1d4ed8">Self-hosted &#8212; recommended</text>
+        <text x="710" y="144" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d4ed8">Mosquitto + TLS &#183; home</text>
+        <text x="710" y="158" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d4ed8">port-forwarded &#183; free, unlimited</text>
+
+        <rect x="625" y="178" width="170" height="52" rx="6" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+        <text x="710" y="200" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#111827">Cloud</text>
+        <text x="710" y="216" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6b7280">EMQX / HiveMQ</text>
+
+        <line x1="810" y1="160" x2="894" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="852" y="148" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">MQTT</text>
+        <text x="852" y="177" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">subscribe</text>
+
+        <rect x="900" y="130" width="140" height="220" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+        <text x="970" y="232" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">Tru-Control</text>
+        <text x="970" y="250" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#6b7280">iPhone app</text>
+      </svg>
+    </div>
+    <figcaption>
+      The app reaches the gateway either directly over Bluetooth (local, offline) or through an
+      MQTT broker (remote, self-hosted or cloud) &mdash; the gateway and app don't need to know
+      which path is active.
+    </figcaption>
+  </figure>
+
+  <div class="legend">
+    <div class="legend-item">
+      <code>inetbox.py</code>
+      <p>Reads the heater's live status over LIN-UART. Everything else on the gateway builds on this.</p>
+    </div>
+    <div class="legend-item">
+      <code>truma_ble_server.py</code>
+      <p>Exposes that status over Bluetooth LE, for control with no router or internet in the loop.</p>
+    </div>
+    <div class="legend-item">
+      <code>mqtt_bridge_complete.py</code>
+      <p>Publishes it to whichever MQTT broker you've configured, for control from anywhere.</p>
+    </div>
+  </div>
+
+  <p class="note">
+    <strong>Either broker works with the same app and the same gateway</strong> &mdash; only
+    where the data physically travels changes. A self-hosted broker keeps every byte on
+    hardware you control, at no ongoing cost; a cloud broker trades that for a five-minute setup.
+  </p>
+
+  <div class="links">
+    <a href="https://github.com/mk4001/Tru-Control" target="_blank" rel="noopener">Tru-Control gateway &amp; app repo &rarr;</a>
+    <a href="https://github.com/mk4001/MosquittoPI_TLS" target="_blank" rel="noopener">Self-hosted broker guide &rarr;</a>
+  </div>
+
+  <footer>Diagram source is a self-contained SVG &mdash; drop it straight into README.md or INSTALLATION.md.</footer>
+</main>

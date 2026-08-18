@@ -1,0 +1,67 @@
+<svg viewBox="0 0 1060 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Tru-Control app reaches the Raspberry Pi gateway either directly over Bluetooth, local and offline, or through an MQTT broker that is either self-hosted or cloud-hosted, remote over the internet.">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f2937"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1060" height="420" fill="#ffffff"/>
+
+  <!-- Heater -->
+  <rect x="20" y="200" width="160" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="100" y="234" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">Truma Combi</text>
+  <text x="100" y="252" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">Heater</text>
+
+  <!-- Heater -> Gateway -->
+  <line x1="180" y1="240" x2="234" y2="240" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="207" y="225" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">LIN-UART</text>
+  <text x="207" y="238" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">(FST T151)</text>
+
+  <!-- Gateway -->
+  <rect x="240" y="110" width="260" height="260" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="370" y="138" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">Raspberry Pi Gateway</text>
+  <line x1="258" y1="150" x2="482" y2="150" stroke="#d1d5db" stroke-width="1"/>
+
+  <text x="258" y="178" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">inetbox.py</text>
+  <text x="258" y="193" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6b7280">reads heater status via LIN-UART</text>
+
+  <text x="258" y="223" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">truma_ble_server.py</text>
+  <text x="258" y="238" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6b7280">exposes a BLE GATT server</text>
+
+  <text x="258" y="268" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">mqtt_bridge_complete.py</text>
+  <text x="258" y="283" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6b7280">publishes status to MQTT</text>
+
+  <!-- Gateway -> Broker (MQTT publish) -->
+  <line x1="500" y1="160" x2="604" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="552" y="148" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">MQTT publish</text>
+
+  <!-- Gateway -> App direct (BLE) -->
+  <line x1="500" y1="320" x2="894" y2="320" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="697" y="305" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">BLE &#183; direct &#183; &#8804;30m &#183; no internet</text>
+
+  <!-- Broker outer -->
+  <rect x="610" y="60" width="200" height="200" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="710" y="85" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">MQTT Broker &#8212; pick one</text>
+  <line x1="625" y1="97" x2="795" y2="97" stroke="#d1d5db" stroke-width="1"/>
+
+  <!-- Self-hosted (accent, recommended) -->
+  <rect x="625" y="108" width="170" height="58" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="710" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1d4ed8">Self-hosted &#8212; recommended</text>
+  <text x="710" y="144" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d4ed8">Mosquitto + TLS &#183; home</text>
+  <text x="710" y="158" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d4ed8">port-forwarded &#183; free, unlimited</text>
+
+  <!-- Cloud -->
+  <rect x="625" y="178" width="170" height="52" rx="6" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="710" y="200" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#111827">Cloud</text>
+  <text x="710" y="216" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6b7280">EMQX / HiveMQ</text>
+
+  <!-- Broker -> App (MQTT subscribe) -->
+  <line x1="810" y1="160" x2="894" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="852" y="148" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">MQTT</text>
+  <text x="852" y="177" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#374151">subscribe</text>
+
+  <!-- App -->
+  <rect x="900" y="130" width="140" height="220" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="970" y="232" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#111827">Tru-Control</text>
+  <text x="970" y="250" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#6b7280">iPhone app</text>
+</svg>
