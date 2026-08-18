@@ -10,6 +10,8 @@ https://apps.apple.com/app/tru-control/id6758611832
 
 **Tru-Control** is a project designed to extend and simplify access to Truma Combi™ systems by combining existing community work with a modern, native iOS application.
 
+Now available for iPhone and iPad, soon will be available also for Apple Watch and CarPlay!
+
 The project builds upon the excellent reverse‑engineering effort by **DanielFett**, in particular the `inetbox.py` project:
 
 https://github.com/danielfett/inetbox.py
