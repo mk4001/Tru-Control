@@ -4,6 +4,10 @@ This document provides the **complete, step-by-step installation instructions** 
 
 It is intentionally separated from the main README to keep conceptual documentation clean while offering a **fully reproducible setup** for users who want to deploy the project.
 
+If you don't have time and desire to follow these instructions, here's an easy shortcut for you: the ISO image of the ready-to-use SD-Card to download and install on your Raspberry PI Zero 2W
+
+https://www.mf-lab.com/Tru-Control_support/
+
 ---
 
 ## Prerequisites
