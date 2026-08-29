@@ -1,60 +1,60 @@
-# Tru-Control — Installazione Hardware (gateway Truma ↔ Raspberry Pi)
+# Tru-Control — Hardware Installation (Truma ↔ Raspberry Pi gateway)
 
-> Guida riorganizzata a partire dalla documentazione hardware del progetto open source [danielfett/inetbox.py](https://github.com/danielfett/inetbox.py) (README + cartella `docs/`), che questo gateway usa come riferimento per il bus LIN della Truma Combi. Per lo schema fotografico originale e il pinout fisico dell'RJ12, vedi i file [`connections.png`](https://github.com/danielfett/inetbox.py/blob/master/docs/connections.png), [`pinout.jpg`](https://github.com/danielfett/inetbox.py/blob/master/docs/pinout.jpg) e [`cpplus.jpg`](https://github.com/danielfett/inetbox.py/blob/master/docs/cpplus.jpg) nel repository originale.
+> Guide reorganized from the hardware documentation of the open-source project [danielfett/inetbox.py](https://github.com/danielfett/inetbox.py) (README + `docs/` folder), which this gateway uses as the reference implementation for the Truma Combi's LIN bus. For the original photographic diagrams and the physical RJ12 pinout, see [`connections.png`](https://github.com/danielfett/inetbox.py/blob/master/docs/connections.png), [`pinout.jpg`](https://github.com/danielfett/inetbox.py/blob/master/docs/pinout.jpg) and [`cpplus.jpg`](https://github.com/danielfett/inetbox.py/blob/master/docs/cpplus.jpg) in the original repository.
 
-## Cosa realizza questa installazione
+## What this installation achieves
 
-Tru-Control non parla mai direttamente con la caldaia: si affida a un **gateway self-hosted** (un Raspberry Pi) che si inserisce fisicamente sul bus LIN tra la Truma Combi e il pannello di controllo CP Plus, traduce quel traffico in MQTT/BLE, ed è quel gateway a cui l'app poi si connette. Questa guida copre solo il lato elettrico di quel gateway — non il software del gateway stesso, né l'app.
+Tru-Control never talks to the heater directly: it relies on a **self-hosted gateway** (a Raspberry Pi) that physically taps into the LIN bus between the Truma Combi and the CP Plus control panel, translates that traffic into MQTT/BLE, and it's that gateway the app actually connects to. This guide covers only the electrical side of that gateway — not the gateway's own software, nor the app.
 
-## Requisiti hardware
+## Required hardware
 
-| Componente | Note |
+| Component | Notes |
 |---|---|
-| Truma Combi (4/6 o E) | Testato dall'autore originale su Combi 4; Combi 6/E dovrebbero funzionare con lo stesso bus |
-| Pannello CP Plus | Deve essere marcato **"inet ready"** — i pannelli CP Plus più vecchi non espongono il bus necessario |
-| Raspberry Pi | Qualsiasi modello recente con GPIO e UART disponibile |
-| Modulo transceiver LIN→UART | Adatta i livelli elettrici del bus LIN della Truma ai pin seriali 3.3V del Raspberry Pi |
-| Cavo RJ12 (6P6C, 6 pin) | Cavo standard per telefonia, usato dal bus Truma |
-| Splitter RJ12 (opzionale) | Solo se si vuole derivare il segnale senza scollegare il cavo esistente tra Combi e CP Plus |
-| Alimentazione 12V | Condivisa con quella che già alimenta Combi e CP Plus |
+| Truma Combi (4/6 or E) | Verified by the original author on the Combi 4; Combi 6/E should work on the same bus |
+| CP Plus control panel | Must be labeled **"inet ready"** — older CP Plus panels don't expose the required bus |
+| Raspberry Pi | Any recent model with GPIO and UART available |
+| LIN-to-UART transceiver module | Adapts the Truma LIN bus's electrical levels to the Raspberry Pi's 3.3V serial pins |
+| RJ12 cable (6P6C, 6-pin) | Standard telephony cable, used by the Truma bus |
+| RJ12 splitter (optional) | Only needed to tap the signal without disconnecting the existing cable between Combi and CP Plus |
+| 12V power supply | Shared with the one already powering the Combi and CP Plus |
 
-## Cablaggio: transceiver ↔ Raspberry Pi
+## Wiring: transceiver ↔ Raspberry Pi
 
-| Pin sul transceiver | Collegato a |
+| Transceiver pin | Connects to |
 |---|---|
-| 12V | Alimentazione 12V esterna (la stessa di Combi/CP Plus) |
-| TX | GPIO 15 del Raspberry Pi (RX del Pi) |
-| RX | GPIO 14 del Raspberry Pi (TX del Pi) |
-| GND (secondo pin GND) | Un pin di massa del Raspberry Pi |
-| INH, SLP | Non collegati |
+| 12V | External 12V supply (same one powering Combi/CP Plus) |
+| TX | Raspberry Pi GPIO 15 (Pi's RX) |
+| RX | Raspberry Pi GPIO 14 (Pi's TX) |
+| GND (second GND pin) | A Raspberry Pi ground pin |
+| INH, SLP | Not connected |
 
-**Punto facile da sbagliare**: TX del transceiver va su RX del Pi e viceversa — è un collegamento incrociato (come su qualunque bus seriale), non 1:1.
+**Easy mistake to make**: the transceiver's TX goes to the Pi's RX and vice versa — it's a crossed connection (as on any serial bus), not a 1:1 wiring.
 
-## Cablaggio: transceiver ↔ bus Truma (RJ12)
+## Wiring: transceiver ↔ Truma bus (RJ12)
 
-| Pin sul transceiver | Pin sul connettore RJ12 |
+| Transceiver pin | RJ12 connector pin |
 |---|---|
 | LIN | Pin 3 |
 | GND | Pin 5 |
 
-Il connettore RJ12 si collega a **una qualsiasi porta libera sulla Truma Combi**, oppure — se non ce n'è una libera — si inserisce con uno splitter direttamente nel cavo già esistente tra Combi e pannello CP Plus, senza doverlo tagliare o modificare.
+The RJ12 connector plugs into **any free port on the Truma Combi**, or — if none is free — is inserted with a splitter directly into the existing cable between the Combi and the CP Plus panel, with no need to cut or modify it.
 
-## Preparazione software sul Raspberry Pi (prerequisiti, prima del gateway vero e proprio)
+## Raspberry Pi software prerequisites (before the actual gateway software)
 
-1. Abilitare l'UART hardware sul Raspberry Pi (disabilitando la console seriale di default) — la procedura varia leggermente per modello/versione di Raspberry Pi OS, seguire la guida ufficiale per il proprio modello.
-2. Dare all'utente che eseguirà il gateway l'accesso alla porta seriale:
+1. Enable the Raspberry Pi's hardware UART (disabling the default serial console) — the exact steps vary slightly by Raspberry Pi model/OS version; follow the official guide for your model.
+2. Grant the user that will run the gateway access to the serial port:
    ```bash
    sudo adduser pi dialout
    ```
-3. Disconnettersi e riconnettersi (o riavviare) perché il permesso venga applicato.
+3. Log out and back in (or reboot) for the permission to take effect.
 
-## Note di sicurezza
+## Safety notes
 
-- L'alimentazione 12V del transceiver deve essere la **stessa massa/riferimento** di quella di Combi e CP Plus — massa flottante o alimentazioni separate non referenziate possono dare letture del bus instabili o danneggiare il transceiver.
-- Verificare che il pannello sia davvero "inet ready" **prima** di aprire qualsiasi connettore: su un pannello non compatibile il bus esposto potrebbe non essere lo stesso, con rischio di cortocircuiti tra pin non previsti per quell'uso.
-- Come per qualsiasi intervento sull'impianto elettrico del camper/RV: scollegare l'alimentazione della Truma prima di inserire o rimuovere connettori RJ12.
+- The transceiver's 12V supply must share the **same ground/reference** as the Combi and CP Plus. A floating ground or an unreferenced separate supply can cause unstable bus readings or damage the transceiver.
+- Confirm the panel is actually "inet ready" **before** opening any connector: on an incompatible panel the exposed bus may not be the same one, risking short circuits between pins not meant for this use.
+- As with any work on the camper/RV's electrical system: disconnect the Truma's power before inserting or removing RJ12 connectors.
 
-## Compatibilità nota
+## Compatibility notes
 
-- Testato dall'autore originale su **Truma Combi 4**; Combi 6 ed E dovrebbero condividere lo stesso protocollo di bus ma non sono stati verificati direttamente da lui.
-- Il pannello CP Plus deve esporre la funzione **"inet ready"** — è il prerequisito che rende disponibile fisicamente il bus LIN usato da questa guida.
+- Verified by the original author on a **Truma Combi 4**; Combi 6 and E are expected to share the same bus protocol but haven't been directly confirmed by him.
+- The CP Plus panel must expose the **"inet ready"** feature — that's the prerequisite that physically exposes the LIN bus this guide relies on.
