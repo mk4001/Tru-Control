@@ -60,9 +60,11 @@ No additional onboard routers or permanent Internet connections are required for
 <img width="850" alt="Architecture" src="https://raw.githubusercontent.com/mk4001/Tru-Control/main/architecture.svg">
 
 ---
-## Hardware Installation
+## Hardware & Software Installation
 
 [HW Installation Guide](HW-Installation.md)
+
+[SW Installation Guide](INSTALLATION.md)
 
 ---
 
