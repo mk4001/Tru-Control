@@ -8,7 +8,7 @@ It is intentionally separated from the main README to keep conceptual documentat
 
 the ISO image of the ready-to-use SD-Card to download and install on your Raspberry PI Zero 2W
 
-https://www.mf-lab.com/Tru-Control_support/
+[Download Raspberry Pi Gateway Image](https://github.com/mk4001/Tru-Control/releases/tag/ISO_Image)
 
 ---
 
