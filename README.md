@@ -62,7 +62,7 @@ No additional onboard routers or permanent Internet connections are required for
 ---
 ## Hardware Installation
 
-[`HW Installation`](https://raw.githubusercontent.com/mk4001/Tru-Control/main/HW-Installation.md)
+[HW Installation Guide](HW-Installation.md)
 
 ---
 
