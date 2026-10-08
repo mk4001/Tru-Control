@@ -6,36 +6,43 @@
 
 Tru-Control never talks to the heater directly: it relies on a **self-hosted gateway** (a Raspberry Pi) that physically taps into the LIN bus between the Truma Combi and the CP Plus control panel, translates that traffic into MQTT/BLE, and it's that gateway the app actually connects to. This guide covers only the electrical side of that gateway — not the gateway's own software, nor the app.
 
+## Wiring at a glance
+
+<!-- Replace the URL below with the one GitHub generates when you drag wiring.mp4 into the editor -->
+[https://github.com/user-attachments/assets/REPLACE-WITH-UPLOADED-VIDEO-ID](https://github.com/user-attachments/assets/cb22d6fd-2e56-4893-8a53-894fd64d3128)
+
+<sub>Raspberry Pi Zero 2 W → T151 LIN transceiver → Truma CP Plus. The wires connect one at a time: GND, TX and RX from the GPIO, then 12V, then LIN and GND to the RJ12 connector. The tables below give the exact pins.</sub>
+
 ## Required hardware
 
-| Component | Notes |
-|---|---|
-| Truma Combi (4/6 or E) | Verified by the original author on the Combi 4; Combi 6/E should work on the same bus |
-| CP Plus control panel | Must be labeled **"inet ready"** — older CP Plus panels don't expose the required bus |
-| Raspberry Pi | Any recent model with GPIO and UART available |
-| LIN-to-UART transceiver module | Adapts the Truma LIN bus's electrical levels to the Raspberry Pi's 3.3V serial pins |
-| RJ12 cable (6P6C, 6-pin) | Standard telephony cable, used by the Truma bus |
-| RJ12 splitter (optional) | Only needed to tap the signal without disconnecting the existing cable between Combi and CP Plus |
-| 12V power supply | Shared with the one already powering the Combi and CP Plus |
+| Component                      | Notes                                                                                            |
+| ------------------------------ | ------------------------------------------------------------------------------------------------ |
+| Truma Combi (4/6 or E)         | Verified by the original author on the Combi 4; Combi 6/E should work on the same bus            |
+| CP Plus control panel          | Must be labeled **"inet ready"** — older CP Plus panels don't expose the required bus            |
+| Raspberry Pi                   | Any recent model with GPIO and UART available                                                    |
+| LIN-to-UART transceiver module | Adapts the Truma LIN bus's electrical levels to the Raspberry Pi's 3.3V serial pins              |
+| RJ12 cable (6P6C, 6-pin)       | Standard telephony cable, used by the Truma bus                                                  |
+| RJ12 splitter (optional)       | Only needed to tap the signal without disconnecting the existing cable between Combi and CP Plus |
+| 12V power supply               | Shared with the one already powering the Combi and CP Plus                                       |
 
 ## Wiring: transceiver ↔ Raspberry Pi
 
-| Transceiver pin | Connects to |
-|---|---|
-| 12V | External 12V supply (same one powering Combi/CP Plus) |
-| TX | Raspberry Pi GPIO 15 (Pi's RX) |
-| RX | Raspberry Pi GPIO 14 (Pi's TX) |
-| GND (second GND pin) | A Raspberry Pi ground pin |
-| INH, SLP | Not connected |
+| Transceiver pin      | Connects to                                           |
+| -------------------- | ----------------------------------------------------- |
+| 12V                  | External 12V supply (same one powering Combi/CP Plus) |
+| TX                   | Raspberry Pi GPIO 15 (Pi's RX)                        |
+| RX                   | Raspberry Pi GPIO 14 (Pi's TX)                        |
+| GND (second GND pin) | A Raspberry Pi ground pin                             |
+| INH, SLP             | Not connected                                         |
 
 **Easy mistake to make**: the transceiver's TX goes to the Pi's RX and vice versa — it's a crossed connection (as on any serial bus), not a 1:1 wiring.
 
 ## Wiring: transceiver ↔ Truma bus (RJ12)
 
 | Transceiver pin | RJ12 connector pin |
-|---|---|
-| LIN | Pin 3 |
-| GND | Pin 5 |
+| --------------- | ------------------ |
+| LIN             | Pin 3              |
+| GND             | Pin 5              |
 
 The RJ12 connector plugs into **any free port on the Truma Combi**, or — if none is free — is inserted with a splitter directly into the existing cable between the Combi and the CP Plus panel, with no need to cut or modify it.
 
@@ -43,9 +50,11 @@ The RJ12 connector plugs into **any free port on the Truma Combi**, or — if no
 
 1. Enable the Raspberry Pi's hardware UART (disabling the default serial console) — the exact steps vary slightly by Raspberry Pi model/OS version; follow the official guide for your model.
 2. Grant the user that will run the gateway access to the serial port:
-   ```bash
+
+   ```
    sudo adduser pi dialout
    ```
+
 3. Log out and back in (or reboot) for the permission to take effect.
 
 ## Safety notes
